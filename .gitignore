@@ -12,7 +12,20 @@ desktop.ini
 # Dados sensíveis / fontes brutas (NÃO publicar)
 *.xlsx
 *.xlsm
-*.csv
 *.zip
 1.Database/
 0.Backup/
+
+# CSVs reais (mantém só o TEMPLATE versionado)
+pipeline/data/*.csv
+!pipeline/data/uf_ranking_TEMPLATE.csv
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build artifacts
+output_test.html
+baseline.html

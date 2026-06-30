@@ -22,9 +22,11 @@ Dashboard interativo de acompanhamento do passivo de análises do Cadastro Ambie
 
 Basta abrir o `index.html` em qualquer navegador moderno — não há build, servidor ou dependências locais.
 
-## Atualização
+## Atualização mensal
 
-A atualização mensal segue o ciclo de fechamento do SICAR. Dados consolidados pela CGEO/SEMARH-PI.
+Pipeline automatizado em `pipeline/`. Veja [pipeline/README.md](pipeline/README.md).
+
+**Resumo:** edite `pipeline/data/data.json` com os números do novo mês e faça `git push`. O **GitHub Actions** (`.github/workflows/build-dashboard.yml`) regenera o `index.html` automaticamente e o GitHub Pages publica.
 
 ---
 **Setor de Elaboração:** CGEO / SEMARH-PI

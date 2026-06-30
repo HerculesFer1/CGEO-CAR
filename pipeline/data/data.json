@@ -1,0 +1,46 @@
+{
+  "_doc": "Atualize este arquivo todo mês com os novos dados. Depois rode: python build.py",
+  "month_long": "Junho",
+  "month_short": "Jun/26",
+  "previous_month_short": "Mai/26",
+  "year": 2026,
+  "pi_analyses_baseline_jan": 13645,
+
+  "pi": {
+    "_doc": "Vem da Planilha1 do Excel do SICAR-PI (pivot de Fase + pivot de Situação)",
+    "total": 333969,
+    "ag_gestor": 92927,
+    "validados": 49175,
+    "cancelados": 2249,
+    "pendentes": 189618,
+    "suspensos": 3375
+  },
+
+  "uf_ranking": {
+    "_doc": "Total do Tema por UF (ranking nacional de análises concluídas). Pode ser CSV.",
+    "AC": 1885, "AL": 21103, "AM": 4054, "AP": 1398, "BA": 0,
+    "CE": 71844, "DF": 145, "ES": 78909, "GO": 308, "MA": 8152,
+    "MG": 70379, "MS": 14077, "MT": 32088, "PA": 39998, "PB": 12496,
+    "PE": 10169, "PI": 46643, "PR": 220423, "RJ": 1340, "RN": 19,
+    "RO": 11273, "RR": 137, "RS": 31, "SC": 46, "SE": 97,
+    "SP": 168515, "TO": 718
+  },
+
+  "history": {
+    "_doc": "Série histórica acumulada. Cada mês adiciona um valor a cada array.",
+    "labels": ["2022", "2023", "2024", "2025", "Jan/26", "Fev/26", "Mar/26", "Abr/26", "Mai/26", "Jun/26"],
+    "ag_gestor": [255373, 278938, 301000, 320811, 294684, 294546, 290070, 255444, 257158, 92927],
+    "validados": [0, 0, 0, 1563, 20010, 20006, 23571, 25469, 37581, 49175],
+    "cancelados": [0, 0, 0, 1574, 1662, 1677, 1708, 1755, 2122, 2249],
+    "pendentes": [0, 0, 0, 6030, 13946, 14767, 15967, 49717, 36235, 189618],
+    "suspensos": [0, 0, 0, 0, 0, 0, 329, 613, 2092, 3375],
+    "total_anual": [255373, 278938, 301000, 329978, 333969]
+  },
+
+  "pi_analyses_4mo": {
+    "_doc": "Últimos 4 meses de análises PI para gráfico monthly e bench PI vs Brasil",
+    "labels": ["Mar/26", "Abr/26", "Mai/26", "Jun/26"],
+    "pi": [23531, 24297, 25497, 46643],
+    "brasil": [589328, 603381, 603381, 816247]
+  }
+}
