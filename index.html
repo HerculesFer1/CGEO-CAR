@@ -839,7 +839,7 @@ body.presenting .topbar { background: var(--vibrancy); }
           <div class="metric-icon" style="background:rgba(239,68,68,0.12); color: var(--apple-red);">
             <i data-lucide="alert-triangle"></i>
           </div>
-          <div class="metric-value">+1.260%</div>
+          <div class="metric-value">+1.259%</div>
           <div class="metric-label">Crescimento de Pendentes</div>
           <div class="metric-subnote">Crescimento da fila do empreendedor vs Jan/26</div>
           <span class="metric-delta delta-dn" style="margin-top: auto; width: fit-content;"><i data-lucide="arrow-up-right"></i> Jan→Jun/26</span>
@@ -919,34 +919,44 @@ const ANOS = ['2022','2023','2024','2025','Jun/26'];
 const TOTAL_REG = [255373,278938,301000,329978,333969];
 
 // Dados para o novo Gráfico Empilhado
-const HIST_LABELS = ['2022', '2023', '2024', '2025', 'Jan/26', 'Fev/26', 'Mar/26', 'Abr/26', 'Mai/26', 'Jun/26'];
-const HIST_AG_GESTOR = [255373, 278938, 301000, 320811, 294684, 294546, 290070, 255444, 257158, 92927];
-const HIST_VALIDADOS = [0, 0, 0, 1563, 20010, 20006, 23571, 25469, 37581, 49175];
-const HIST_CANCELADOS = [0, 0, 0, 1574, 1662, 1677, 1708, 1755, 2122, 2249];
-const HIST_PENDENTES = [0, 0, 0, 6030, 13946, 14767, 15967, 49717, 36235, 189618];
-const HIST_SUSPENSOS = [0, 0, 0, 0, 0, 0, 329, 613, 2092, 3375];
+const HIST_LABELS = ['2022','2023','2024','2025','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26'];
+const HIST_AG_GESTOR = [255373,278938,301000,320811,294684,294546,290070,255444,257158,92927];
+const HIST_VALIDADOS = [0,0,0,1563,20010,20006,23571,25469,37581,49175];
+const HIST_CANCELADOS = [0,0,0,1574,1662,1677,1708,1755,2122,2249];
+const HIST_PENDENTES = [0,0,0,6030,13946,14767,15967,49717,36235,189618];
+const HIST_SUSPENSOS = [0,0,0,0,0,0,329,613,2092,3375];
 
 const RANKING = [
-  {r:1,e:'PR',reg:'Sul',v:220423},{r:2,e:'SP',reg:'Sudeste',v:168515},
-  {r:3,e:'ES',reg:'Sudeste',v:78909},{r:4,e:'CE',reg:'Nordeste',v:71844},
-  {r:5,e:'MG',reg:'Sudeste',v:70379},{r:6,e:'PI',reg:'Nordeste',v:46643},
-  {r:7,e:'PA',reg:'Norte',v:39998},{r:8,e:'MT',reg:'Centro-Oeste',v:32088},
-  {r:9,e:'AL',reg:'Nordeste',v:21103},{r:10,e:'MS',reg:'Centro-Oeste',v:14077},
-  {r:11,e:'PB',reg:'Nordeste',v:12496},{r:12,e:'RO',reg:'Norte',v:11273},
-  {r:13,e:'PE',reg:'Nordeste',v:10169},{r:14,e:'MA',reg:'Nordeste',v:8152},
-  {r:15,e:'AM',reg:'Norte',v:4054},{r:16,e:'AC',reg:'Norte',v:1885},
-  {r:17,e:'AP',reg:'Norte',v:1398},{r:18,e:'RJ',reg:'Sudeste',v:1340},
-  {r:19,e:'TO',reg:'Norte',v:718},{r:20,e:'GO',reg:'Centro-Oeste',v:308},
-  {r:21,e:'DF',reg:'Centro-Oeste',v:145},{r:22,e:'RR',reg:'Norte',v:137},
-  {r:23,e:'SE',reg:'Nordeste',v:97},{r:24,e:'SC',reg:'Sul',v:46},
-  {r:25,e:'RS',reg:'Sul',v:31},{r:26,e:'RN',reg:'Nordeste',v:19},
+  {r:1,e:'PR',reg:'Sul',v:220423},
+  {r:2,e:'SP',reg:'Sudeste',v:168515},
+  {r:3,e:'ES',reg:'Sudeste',v:78909},
+  {r:4,e:'CE',reg:'Nordeste',v:71844},
+  {r:5,e:'MG',reg:'Sudeste',v:70379},
+  {r:6,e:'PI',reg:'Nordeste',v:46643},
+  {r:7,e:'PA',reg:'Norte',v:39998},
+  {r:8,e:'MT',reg:'Centro-Oeste',v:32088},
+  {r:9,e:'AL',reg:'Nordeste',v:21103},
+  {r:10,e:'MS',reg:'Centro-Oeste',v:14077},
+  {r:11,e:'PB',reg:'Nordeste',v:12496},
+  {r:12,e:'RO',reg:'Norte',v:11273},
+  {r:13,e:'PE',reg:'Nordeste',v:10169},
+  {r:14,e:'MA',reg:'Nordeste',v:8152},
+  {r:15,e:'AM',reg:'Norte',v:4054},
+  {r:16,e:'AC',reg:'Norte',v:1885},
+  {r:17,e:'AP',reg:'Norte',v:1398},
+  {r:18,e:'RJ',reg:'Sudeste',v:1340},
+  {r:19,e:'TO',reg:'Norte',v:718},
+  {r:20,e:'GO',reg:'Centro-Oeste',v:308},
+  {r:21,e:'DF',reg:'Centro-Oeste',v:145},
+  {r:22,e:'RR',reg:'Norte',v:137},
+  {r:23,e:'SE',reg:'Nordeste',v:97},
+  {r:24,e:'SC',reg:'Sul',v:46},
+  {r:25,e:'RS',reg:'Sul',v:31},
+  {r:26,e:'RN',reg:'Nordeste',v:19},
   {r:27,e:'BA',reg:'Nordeste',v:0}
 ];
 
-const NE = [
-  {e:'CE',v:71844},{e:'PI',v:46643},{e:'AL',v:21103},{e:'PB',v:12496},
-  {e:'PE',v:10169},{e:'MA',v:8152},{e:'SE',v:97},{e:'RN',v:19},{e:'BA',v:0}
-];
+const NE = [{e:'CE',v:71844},{e:'PI',v:46643},{e:'AL',v:21103},{e:'PB',v:12496},{e:'PE',v:10169},{e:'MA',v:8152},{e:'SE',v:97},{e:'RN',v:19},{e:'BA',v:0}];
 
 // ══════════════════════════════════════════════
 // THEME
