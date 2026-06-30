@@ -233,53 +233,7 @@ def build(html, data, d):
     html = patch(html, r'Jan→\w+/\d+(?=</span>\s*</div>\s*</div>\s*</div>\s*<div class="bento bento-2col)',
                  f'Jan→{m_short}')
 
-    # ── KPI strip ──
-    def kpi(label_substr, new_val):
-        return patch(html_ref[0],
-            r'(Taxa Conclusão Global|Cresc\. Mensal Validações|Share Nordeste|Gargalo Externo|Taxa de Validação Real)(</span>\s*<span class="kp-val"[^>]*>)[^<]+(</span>)'.replace('(Taxa Conclusão Global|Cresc\\. Mensal Validações|Share Nordeste|Gargalo Externo|Taxa de Validação Real)', '(' + re.escape(label_substr) + ')'),
-            lambda m: m.group(1) + m.group(2) + new_val + m.group(3))
-    html_ref = [html]
-    html_ref[0] = kpi("Taxa Conclusão Global", f"{br_pct(d['pct_concluidos'])}%")
-    html_ref[0] = kpi("Cresc. Mensal Validações", f"+{br_pct(d['val_mom'])}%")
-    html_ref[0] = kpi("Share Nordeste", f"{br_pct(d['ne_share_pi'])}%")
-    html_ref[0] = kpi("Gargalo Externo", f"{br_pct(d['pct_pendentes'])}%")
-    html_ref[0] = kpi("Taxa de Validação Real", f"{br_pct(d['pct_validados'])}%")
-    html = html_ref[0]
-    # Atualiza a legenda "{prev}→{cur}" do KPI de Validações
-    html = patch(html, r'(Cresc\. Mensal Validações.+?label-tertiary\)">)[^<]+(</span>)',
-                 lambda m: m.group(1) + f"{m_prev.split('/')[0]}→{m_short}" + m.group(2),
-                 flags=re.DOTALL)
-
-    # ── Insights (Gargalo do Gestor) ──
-    if d["pct_ag_gestor"] < 40:
-        emoji_g, label_g = "🟢", "Avanço Histórico"
-    else:
-        emoji_g, label_g = "🔴", "Diagnóstico Crítico"
-    html = patch(html, r'>[🔴🟢🟡] Gargalo do Gestor — [^<]+<',
-                 f'>{emoji_g} Gargalo do Gestor — {label_g}<')
-    html = patch(html, r'>[\d,]+% do passivo retido no órgão ambiental<',
-                 f'>{br_pct(d["pct_ag_gestor"])}% do passivo retido no órgão ambiental<')
-    html = patch(html, r'[\d.]+ cadastros aguardam análise inicial\. Se cada analista revir ~50 cadastros/mês, seriam necessários <strong>~\d+ técnicos por 12 meses</strong>',
-                 f'{br_num(pi["ag_gestor"])} cadastros aguardam análise inicial. Se cada analista revir ~50 cadastros/mês, seriam necessários <strong>~{d["tecnicos"]} técnicos por 12 meses</strong>')
-    # Frase da redução AG
-    tendencia = "Forte queda" if d["ag_mom"] < -10 else ("Leve queda" if d["ag_mom"] < 0 else "Leve alta")
-    html = patch(html, r'Aguardando Gestor caiu de [\d.]+ para [\d.]+ \(−?[\d,]+%\)\. [^<]+\.',
-                 f'Aguardando Gestor passou de {br_num(d["ag_25"])} para {br_num(pi["ag_gestor"])} ({br_pct(d["ag_25_now"])}%). {tendencia} em {m_short} ({br_pct(d["ag_mom"])}% vs {m_prev}).')
-
-    # ── Insights (Gargalo do Empreendedor) ──
-    if d["pct_pendentes"] > 40:
-        emoji_e, label_e = "🔴", "Alerta Crítico"
-    elif d["pct_pendentes"] > 15:
-        emoji_e, label_e = "🟡", "Alerta"
-    else:
-        emoji_e, label_e = "🟢", "Sob Controle"
-    html = patch(html, r'>[🔴🟢🟡] Gargalo do Empreendedor — [^<]+<',
-                 f'>{emoji_e} Gargalo do Empreendedor — {label_e}<')
-    html = patch(html, r'>[\d,]+% retido por falta de ação externa<',
-                 f'>{br_pct(d["pct_pendentes"])}% retido por falta de ação externa<')
-    sentido = "Aumento" if d["delta_pend"] > 0 else "Redução"
-    html = patch(html, r'[\d.]+ cadastros exigem retificações\. (?:Redução|Aumento) de [\d.]+ pendentes em \w+/\d+',
-                 f'{br_num(pi["pendentes"])} cadastros exigem retificações. {sentido} de {br_num(abs(d["delta_pend"]))} pendentes em {m_short}')
+    # ── Seção Diagnóstico foi removida — KPI strip e insights nao precisam mais ser patcheados.
 
     # ── JS data block ──
     months4 = data["pi_analyses_4mo"]["labels"]

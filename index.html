@@ -152,7 +152,7 @@ body::before {
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--separator);
-  display: flex; align-items: center;
+  display: flex; align-items: center; justify-content: center;
   padding: 0 20px; gap: 8px;
   transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
   overflow-x: auto;
@@ -484,9 +484,6 @@ body.presenting .topbar { background: var(--vibrancy); }
   </button>
   <button class="tab-btn" onclick="showTab('temporal',this)">
     <i data-lucide="line-chart"></i> Evolução Temporal
-  </button>
-  <button class="tab-btn" onclick="showTab('diag',this)">
-    <i data-lucide="search"></i> Diagnóstico
   </button>
 </nav>
 
@@ -892,105 +889,6 @@ body.presenting .topbar { background: var(--vibrancy); }
             <button class="expand-hint" onclick="event.stopPropagation();expandCard(this.closest('.card'))"><i data-lucide="maximize-2"></i> Expandir</button>
           </div>
           <div class="chart-wrap"><canvas id="c-stacked"></canvas></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="dash-section" id="sec-diag">
-    <p class="section-label">Diagnóstico Estratégico — Insights Acionáveis</p>
-    
-    <div class="bento" style="grid-template-columns:1fr;padding-top:8px;padding-bottom:0;">
-      <div class="card accent-blue">
-        <div class="card-inner-full">
-          <div class="ch" style="margin-bottom:20px;">
-            <div class="ch-left">
-              <div class="ch-title">5 KPIs Estratégicos de Gestão Ambiental</div>
-              <div class="ch-sub">Métricas definidas para acompanhamento executivo contínuo</div>
-            </div>
-          </div>
-          
-          <div class="kpi-strip">
-            <div class="kpi-pill">
-              <span class="kp-label"><i data-lucide="bar-chart"></i> Taxa Conclusão Global</span>
-              <span class="kp-val" style="color:var(--apple-green)">72,2%</span>
-              <span style="font-size:11px;color:var(--label-tertiary)">Meta: ≥40% Dez/26</span>
-            </div>
-            <div class="kpi-pill">
-              <span class="kp-label"><i data-lucide="trending-up"></i> Cresc. Mensal Validações</span>
-              <span class="kp-val" style="color:var(--apple-green)">+30,8%</span>
-              <span style="font-size:11px;color:var(--label-tertiary)">Mai→Jun/26</span>
-            </div>
-            <div class="kpi-pill">
-              <span class="kp-label"><i data-lucide="globe"></i> Share Nordeste</span>
-              <span class="kp-val" style="color:var(--apple-blue)">27,4%</span>
-              <span style="font-size:11px;color:var(--label-tertiary)">2° colocado · PI</span>
-            </div>
-            <div class="kpi-pill">
-              <span class="kp-label"><i data-lucide="alert-circle"></i> Gargalo Externo</span>
-              <span class="kp-val" style="color:var(--apple-orange)">56,8%</span>
-              <span style="font-size:11px;color:var(--label-tertiary)">Retido c/ Empreendedor</span>
-            </div>
-            <div class="kpi-pill">
-              <span class="kp-label"><i data-lucide="leaf"></i> Taxa de Validação Real</span>
-              <span class="kp-val" style="color:var(--apple-green)">14,7%</span>
-              <span style="font-size:11px;color:var(--label-tertiary)">Meta nacional: ≥15%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="bento bento-2col" style="padding-top:16px;">
-      <div class="card accent-red">
-        <div class="card-inner-full">
-          <div class="ch">
-            <div class="ch-left">
-              <div class="ch-title">🟢 Gargalo do Gestor — Avanço Histórico</div>
-              <div class="ch-sub">27,8% do passivo retido no órgão ambiental</div>
-            </div>
-          </div>
-
-          <div class="insight-item">
-            <div class="ii-icon" style="background:rgba(239,68,68,0.12); color: var(--apple-red);"><i data-lucide="flame"></i></div>
-            <div>
-              <div class="ii-title">Hipótese: Subdimensionamento da Equipe Técnica</div>
-              <div class="ii-text">92.927 cadastros aguardam análise inicial. Se cada analista revir ~50 cadastros/mês, seriam necessários <strong>~155 técnicos por 12 meses</strong> para zerar o passivo. Recomendação: manter quadro atual e consolidar a força-tarefa em curso.</div>
-            </div>
-          </div>
-          <div class="insight-item">
-            <div class="ii-icon" style="background:rgba(16,185,129,0.12); color: var(--apple-green);"><i data-lucide="trending-down"></i></div>
-            <div>
-              <div class="ii-title">Redução Real do Passivo Público</div>
-              <div class="ii-text">Aguardando Gestor caiu de 320.811 para 92.927 (−71,0%). Forte queda em Jun/26 (−63,9% vs Mai/26). O ritmo atual <strong>alinha-se à meta</strong> para atingir conformidade nacional até 2028.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="card accent-yellow">
-        <div class="card-inner-full">
-          <div class="ch">
-            <div class="ch-left">
-              <div class="ch-title">🔴 Gargalo do Empreendedor — Alerta Crítico</div>
-              <div class="ch-sub">56,8% retido por falta de ação externa</div>
-            </div>
-          </div>
-
-          <div class="insight-item">
-            <div class="ii-icon" style="background:rgba(245,158,11,0.12); color: var(--apple-orange);"><i data-lucide="phone-call"></i></div>
-            <div>
-              <div class="ii-title">Hipótese: Falha de Notificação Ativa</div>
-              <div class="ii-text">189.618 cadastros exigem retificações. Aumento de 153.383 pendentes em Jun/26 — reflete migração massiva do passivo público para o privado. O gargalo deslocou-se: exige comunicação massiva <strong>WhatsApp + SMS</strong> + parceria Sindicatos/FAIPÍ.</div>
-            </div>
-          </div>
-          <div class="insight-item">
-            <div class="ii-icon" style="background:rgba(16,185,129,0.12); color: var(--apple-green);"><i data-lucide="check-square"></i></div>
-            <div>
-              <div class="ii-title">Oportunidade: Mutirão de Conversão</div>
-              <div class="ii-text">Organizar <strong>mutirões itinerantes</strong> nos municípios com mais pendências. O objetivo é transformar a enorme taxa de pendentes/suspensos em "Validados" através de assessoria local em tempo real.</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
