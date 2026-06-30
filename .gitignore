@@ -1,0 +1,18 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Dados sensíveis / fontes brutas (NÃO publicar)
+*.xlsx
+*.xlsm
+*.csv
+*.zip
+1.Database/
+0.Backup/
