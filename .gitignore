@@ -1,0 +1,7 @@
+node_modules/
+package-lock.json
+*.zip
+temp_parse/
+1.Database/ABR_2026.csv
+1.Database/MAI_2026.csv
+1.Database/CAR- modelo (1) (1).xlsx
