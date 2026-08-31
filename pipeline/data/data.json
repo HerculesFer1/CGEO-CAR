@@ -1,7 +1,7 @@
 {
   "_doc": "Atualize este arquivo todo mês com os novos dados. Depois rode: python build.py",
-  "month_long": "Julho",
-  "month_short": "Jul/26",
+  "month_long": "Agosto",
+  "month_short": "Ago/26",
   "previous_month_short": "Jun/26",
   "year": 2026,
   "pi_analyses_baseline_jan": 13645,
@@ -28,7 +28,7 @@
 
   "history": {
     "_doc": "Série histórica acumulada. Cada mês adiciona um valor a cada array.",
-    "labels": ["2022", "2023", "2024", "2025", "Jan/26", "Fev/26", "Mar/26", "Abr/26", "Mai/26", "Jun/26", "Jul/26"],
+    "labels": ["2022", "2023", "2024", "2025", "Jan/26", "Fev/26", "Mar/26", "Abr/26", "Mai/26", "Jun/26", "Ago/26"],
     "ag_gestor":  [255373, 278938, 301000, 320811, 294684, 294546, 290070, 255444, 257158,  92927, 102740],
     "validados":  [     0,      0,      0,   1563,  20010,  20006,  23571,  25469,  37581,  49175,  58400],
     "cancelados": [     0,      0,      0,   1574,   1662,   1677,   1708,   1755,   2122,   2249,   2746],
@@ -39,7 +39,7 @@
 
   "pi_analyses_4mo": {
     "_doc": "Últimos 4 meses de análises PI + total Brasil para bench PI vs Brasil",
-    "labels": ["Abr/26", "Mai/26", "Jun/26", "Jul/26"],
+    "labels": ["Abr/26", "Mai/26", "Jun/26", "Ago/26"],
     "pi":     [ 24297,   25497,   46643,   52635],
     "brasil": [603381,  603381,  816247,  819513]
   }
