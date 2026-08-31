@@ -645,13 +645,13 @@ body.presenting .topbar { background: var(--vibrancy); }
               <span style="display:flex; align-items:center; gap:6px;">
                 <span class="bd-dot" style="background:var(--apple-yellow);"></span> Ag. Empreend.
               </span>
-              <span class="val">172.824</span>
+              <span class="val">171.770</span>
             </div>
             <div class="breakdown-item">
               <span style="display:flex; align-items:center; gap:6px;">
                 <span class="bd-dot" style="background:var(--apple-green);"></span> Validados
               </span>
-              <span class="val">57.346</span>
+              <span class="val">58.400</span>
             </div>
             <div class="breakdown-item">
               <span style="display:flex; align-items:center; gap:6px;">
@@ -667,10 +667,10 @@ body.presenting .topbar { background: var(--vibrancy); }
           <div class="metric-icon" style="background:rgba(251,191,36,0.12); color: var(--apple-yellow);">
             <i data-lucide="user-cog"></i>
           </div>
-          <div class="metric-value count-up" data-target="172824">0</div>
+          <div class="metric-value count-up" data-target="171770">0</div>
           <div class="metric-label">Aguardando Empreendedor</div>
           <div class="metric-subnote">Cálculo: Pendentes + Suspensos (Exigem retificação)</div>
-          <span class="metric-delta delta-wn" style="margin-top: auto; width: fit-content;">51,5% do Total</span>
+          <span class="metric-delta delta-wn" style="margin-top: auto; width: fit-content;">51,2% do Total</span>
         </div>
       </div>
     </div>
@@ -681,10 +681,10 @@ body.presenting .topbar { background: var(--vibrancy); }
           <div class="metric-icon" style="background:rgba(16,185,129,0.12); color: var(--apple-green);">
             <i data-lucide="shield-check"></i>
           </div>
-          <div class="metric-value count-up" data-target="57346">0</div>
+          <div class="metric-value count-up" data-target="58400">0</div>
           <div class="metric-label">Validados (Regularizados)</div>
           <div class="metric-subnote">Cadastros analisados e aprovados sem pendências</div>
-          <span class="metric-delta delta-up" style="margin-top: auto; width: fit-content;">17,1% do Total</span>
+          <span class="metric-delta delta-up" style="margin-top: auto; width: fit-content;">17,4% do Total</span>
         </div>
       </div>
       
@@ -898,11 +898,11 @@ body.presenting .topbar { background: var(--vibrancy); }
             </div>
             <div class="status-item">
               <div class="si-top"><span class="si-dot" style="background:var(--apple-orange)"></span><span class="si-lbl">Ag. Empreendedor</span></div>
-              <div class="si-val">172.824</div>
+              <div class="si-val">171.770</div>
             </div>
             <div class="status-item">
               <div class="si-top"><span class="si-dot" style="background:var(--apple-green)"></span><span class="si-lbl">Validados</span></div>
-              <div class="si-val">57.346</div>
+              <div class="si-val">58.400</div>
             </div>
             <div class="status-item">
               <div class="si-top"><span class="si-dot" style="background:var(--apple-blue)"></span><span class="si-lbl">Cancelados</span></div>
@@ -956,7 +956,7 @@ body.presenting .topbar { background: var(--vibrancy); }
           <div class="metric-icon" style="background:rgba(239,68,68,0.12); color: var(--apple-red);">
             <i data-lucide="alert-triangle"></i>
           </div>
-          <div class="metric-value">+1.139%</div>
+          <div class="metric-value">+1.131%</div>
           <div class="metric-label">Crescimento de Pendentes</div>
           <div class="metric-subnote">Crescimento da fila do empreendedor vs Jan/26</div>
           <span class="metric-delta delta-dn" style="margin-top: auto; width: fit-content;"><i data-lucide="arrow-up-right"></i> Jan→Jul/26</span>
@@ -1027,9 +1027,9 @@ const PI_ANALYSES = [24297,25497,46643,52635];
 const BRASIL_ANALYSES = [603381,603381,816247,819513];
 
 const RESULT_MONTHS = ['2025','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26'];
-const VALIDADOS  = [1563,20010,20006,23571,25469,37581,49175,57346];
+const VALIDADOS  = [1563,20010,20006,23571,25469,37581,49175,58400];
 const CANCELADOS = [1574,1662,1677,1708,1755,2122,2249,2746];
-const PENDENTES  = [6030,13946,14767,15967,49717,36235,189618,172824]; // Agrupado Pendentes + Suspensos
+const PENDENTES  = [6030,13946,14767,15967,49717,36235,189618,171770]; // Agrupado Pendentes + Suspensos
 const AG_GESTOR  = [320811,294684,294546,290070,255444,257158,92927,102740];
 
 const ANOS = ['2022','2023','2024','2025','Jul/26'];
@@ -1038,9 +1038,9 @@ const TOTAL_REG = [255373,278938,301000,329978,335656];
 // Dados para o novo Gráfico Empilhado
 const HIST_LABELS = ['2022','2023','2024','2025','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26'];
 const HIST_AG_GESTOR = [255373,278938,301000,320811,294684,294546,290070,255444,257158,92927,102740];
-const HIST_VALIDADOS = [0,0,0,1563,20010,20006,23571,25469,37581,49175,57346];
+const HIST_VALIDADOS = [0,0,0,1563,20010,20006,23571,25469,37581,49175,58400];
 const HIST_CANCELADOS = [0,0,0,1574,1662,1677,1708,1755,2122,2249,2746];
-const HIST_PENDENTES = [0,0,0,6030,13946,14767,15967,49717,36235,189618,172824];
+const HIST_PENDENTES = [0,0,0,6030,13946,14767,15967,49717,36235,189618,171770];
 const HIST_SUSPENSOS = [0,0,0,0,0,0,329,613,2092,3375,4265];
 
 const RANKING = [
@@ -1247,8 +1247,8 @@ function startCounters(){
 const FUNNEL_DATA = [
   {label:'Total de Registros', val:335656, pct:100.0, color:'#94A3B8'},
   {label:'Ag. Gestor (passivo)', val:102740, pct:30.6, color:'#EF4444'},
-  {label:'Ag. Empreendedor', val:172824, pct:51.5, color:'#F59E0B'},
-  {label:'Validados', val:57346, pct:17.1, color:'#10B981'},
+  {label:'Ag. Empreendedor', val:171770, pct:51.2, color:'#F59E0B'},
+  {label:'Validados', val:58400, pct:17.4, color:'#10B981'},
   {label:'Cancelados', val:2746, pct:0.8, color:'#3B82F6'},
 ];
 function buildFunnel(){
@@ -1321,9 +1321,9 @@ function initCharts(){
   chartInstances.donut = new Chart(document.getElementById('c-donut'), {
     type:'doughnut',
     data:{
-      labels:['Aguardando Gestor (30,6%)','Aguardando Empreendedor (51,5%)','Validados (17,1%)','Cancelados (0,8%)'],
+      labels:['Aguardando Gestor (30,6%)','Aguardando Empreendedor (51,2%)','Validados (17,4%)','Cancelados (0,8%)'],
       datasets:[{
-        data:[102740, 172824, 57346, 2746],
+        data:[102740, 171770, 58400, 2746],
         backgroundColor:['#EF4444','#F59E0B','#10B981','#3B82F6'],
         borderWidth:0, hoverOffset:10
       }]
@@ -1344,8 +1344,8 @@ function initCharts(){
     data:{
       labels:MONTHS4,
       datasets:[
-        {label:'Validados',data:[25469,37581,49175,57346],backgroundColor:'#10B981',borderRadius:6,borderSkipped:false},
-        {label:'Ag. Empreendedor',data:[49717,36235,189618,172824],backgroundColor:'#F59E0B',borderRadius:6,borderSkipped:false},
+        {label:'Validados',data:[25469,37581,49175,58400],backgroundColor:'#10B981',borderRadius:6,borderSkipped:false},
+        {label:'Ag. Empreendedor',data:[49717,36235,189618,171770],backgroundColor:'#F59E0B',borderRadius:6,borderSkipped:false},
         {label:'Cancelados',data:[1755,2122,2249,2746],backgroundColor:'#3B82F6',borderRadius:6,borderSkipped:false},
       ]
     },
@@ -1428,9 +1428,9 @@ function initCharts(){
   chartInstances.resp = new Chart(document.getElementById('c-resp'), {
     type:'pie',
     data:{
-      labels:['Passivo Gestor (30,6%)','Passivo Empreend. (51,5%)','Concluídos Reais (17,9%)'],
+      labels:['Passivo Gestor (30,6%)','Passivo Empreend. (51,2%)','Concluídos Reais (18,2%)'],
       datasets:[{
-        data:[102740,172824,60092],
+        data:[102740,171770,61146],
         backgroundColor:['#EF4444','#F59E0B','#10B981'],
         borderWidth:0, hoverOffset:8
       }]

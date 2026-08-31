@@ -7,12 +7,12 @@
   "pi_analyses_baseline_jan": 13645,
 
   "pi": {
-    "_doc": "Categorias mapeadas dos micro-status do CSV do SICAR-PI",
+    "_doc": "Categorias mapeadas dos micro-status do CSV do SICAR-PI (tabela SEMARH)",
     "total": 335656,
     "ag_gestor": 102740,
-    "validados": 57346,
+    "validados": 58400,
     "cancelados": 2746,
-    "pendentes": 172824,
+    "pendentes": 171770,
     "suspensos": 4265
   },
 
@@ -30,9 +30,9 @@
     "_doc": "Série histórica acumulada. Cada mês adiciona um valor a cada array.",
     "labels": ["2022", "2023", "2024", "2025", "Jan/26", "Fev/26", "Mar/26", "Abr/26", "Mai/26", "Jun/26", "Jul/26"],
     "ag_gestor":  [255373, 278938, 301000, 320811, 294684, 294546, 290070, 255444, 257158,  92927, 102740],
-    "validados":  [     0,      0,      0,   1563,  20010,  20006,  23571,  25469,  37581,  49175,  57346],
+    "validados":  [     0,      0,      0,   1563,  20010,  20006,  23571,  25469,  37581,  49175,  58400],
     "cancelados": [     0,      0,      0,   1574,   1662,   1677,   1708,   1755,   2122,   2249,   2746],
-    "pendentes":  [     0,      0,      0,   6030,  13946,  14767,  15967,  49717,  36235, 189618, 172824],
+    "pendentes":  [     0,      0,      0,   6030,  13946,  14767,  15967,  49717,  36235, 189618, 171770],
     "suspensos":  [     0,      0,      0,      0,      0,      0,    329,    613,   2092,   3375,   4265],
     "total_anual":[255373, 278938, 301000, 329978, 335656]
   },
