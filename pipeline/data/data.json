@@ -1,46 +1,46 @@
 {
   "_doc": "Atualize este arquivo todo mês com os novos dados. Depois rode: python build.py",
-  "month_long": "Junho",
-  "month_short": "Jun/26",
-  "previous_month_short": "Mai/26",
+  "month_long": "Julho",
+  "month_short": "Jul/26",
+  "previous_month_short": "Jun/26",
   "year": 2026,
   "pi_analyses_baseline_jan": 13645,
 
   "pi": {
-    "_doc": "Vem da Planilha1 do Excel do SICAR-PI (pivot de Fase + pivot de Situação)",
-    "total": 334881,
-    "ag_gestor": 96064,
-    "validados": 50903,
-    "cancelados": 2516,
-    "pendentes": 185398,
-    "suspensos": 4083
+    "_doc": "Categorias mapeadas dos micro-status do CSV do SICAR-PI",
+    "total": 335656,
+    "ag_gestor": 102740,
+    "validados": 57346,
+    "cancelados": 2746,
+    "pendentes": 172824,
+    "suspensos": 4265
   },
 
   "uf_ranking": {
-    "_doc": "Total do Tema por UF (ranking nacional de análises concluídas). Fonte: SICAR federal Jun/2026.",
-    "AC": 1943, "AL": 21521, "AM": 4117, "AP": 1474, "BA": 0,
-    "CE": 71867, "DF": 146, "ES": 78534, "GO": 308, "MA": 8181,
-    "MG": 70272, "MS": 14042, "MT": 32260, "PA": 40035, "PB": 12526,
-    "PE": 10167, "PI": 49815, "PR": 216616, "RJ": 1124, "RN": 25,
-    "RO": 11295, "RR": 165, "RS": 37, "SC": 46, "SE": 99,
-    "SP": 168415, "TO": 750
+    "_doc": "Total do Tema por UF (ranking nacional de análises concluídas).",
+    "AC": 2012, "AL": 21565, "AM": 4307, "AP": 1585, "BA": 0,
+    "CE": 72062, "DF": 146, "ES": 77763, "GO": 307, "MA": 8234,
+    "MG": 92026, "MS": 12969, "MT": 32728, "PA": 42128, "PB": 12565,
+    "PE": 10167, "PI": 52635, "PR": 193243, "RJ": 1181, "RN": 32,
+    "RO": 11315, "RR": 221, "RS": 43, "SC": 567, "SE": 104,
+    "SP": 168756, "TO": 852
   },
 
   "history": {
     "_doc": "Série histórica acumulada. Cada mês adiciona um valor a cada array.",
-    "labels": ["2022", "2023", "2024", "2025", "Jan/26", "Fev/26", "Mar/26", "Abr/26", "Mai/26", "Jun/26"],
-    "ag_gestor": [255373, 278938, 301000, 320811, 294684, 294546, 290070, 255444, 257158, 96064],
-    "validados": [0, 0, 0, 1563, 20010, 20006, 23571, 25469, 37581, 50903],
-    "cancelados": [0, 0, 0, 1574, 1662, 1677, 1708, 1755, 2122, 2516],
-    "pendentes": [0, 0, 0, 6030, 13946, 14767, 15967, 49717, 36235, 185398],
-    "suspensos": [0, 0, 0, 0, 0, 0, 329, 613, 2092, 4083],
-    "total_anual": [255373, 278938, 301000, 329978, 334881]
+    "labels": ["2022", "2023", "2024", "2025", "Jan/26", "Fev/26", "Mar/26", "Abr/26", "Mai/26", "Jun/26", "Jul/26"],
+    "ag_gestor":  [255373, 278938, 301000, 320811, 294684, 294546, 290070, 255444, 257158,  92927, 102740],
+    "validados":  [     0,      0,      0,   1563,  20010,  20006,  23571,  25469,  37581,  49175,  57346],
+    "cancelados": [     0,      0,      0,   1574,   1662,   1677,   1708,   1755,   2122,   2249,   2746],
+    "pendentes":  [     0,      0,      0,   6030,  13946,  14767,  15967,  49717,  36235, 189618, 172824],
+    "suspensos":  [     0,      0,      0,      0,      0,      0,    329,    613,   2092,   3375,   4265],
+    "total_anual":[255373, 278938, 301000, 329978, 335656]
   },
 
   "pi_analyses_4mo": {
-    "_doc": "Últimos 4 meses de análises PI para gráfico monthly e bench PI vs Brasil",
-    "labels": ["Mar/26", "Abr/26", "Mai/26", "Jun/26"],
-    "pi": [23531, 24297, 25497, 49815],
-    "brasil": [589328, 603381, 620581, 815780]
+    "_doc": "Últimos 4 meses de análises PI + total Brasil para bench PI vs Brasil",
+    "labels": ["Abr/26", "Mai/26", "Jun/26", "Jul/26"],
+    "pi":     [ 24297,   25497,   46643,   52635],
+    "brasil": [603381,  603381,  816247,  819513]
   }
 }
