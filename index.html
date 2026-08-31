@@ -945,10 +945,10 @@ body.presenting .topbar { background: var(--vibrancy); }
           <div class="metric-icon" style="background:rgba(245,158,11,0.12); color: var(--apple-orange);">
             <i data-lucide="zap"></i>
           </div>
-          <div class="metric-value">+-3%</div>
+          <div class="metric-value">+-2%</div>
           <div class="metric-label">Maior Salto Mensal</div>
           <div class="metric-subnote">Mês com maior incremento de produtividade</div>
-          <span class="metric-delta delta-up" style="margin-top: auto; width: fit-content;"><i data-lucide="arrow-up-right"></i> Jun→Ago/26</span>
+          <span class="metric-delta delta-up" style="margin-top: auto; width: fit-content;"><i data-lucide="arrow-up-right"></i> Jul→Ago/26</span>
         </div>
       </div>
       <div class="card accent-red">
@@ -1022,26 +1022,26 @@ body.presenting .topbar { background: var(--vibrancy); }
 // ══════════════════════════════════════════════
 // DATA
 // ══════════════════════════════════════════════
-const MONTHS4 = ['Abr/26','Mai/26','Jun/26','Ago/26'];
-const PI_ANALYSES = [24297,25497,46643,52635];
-const BRASIL_ANALYSES = [603381,603381,816247,819513];
+const MONTHS4 = ['Mai/26','Jun/26','Jul/26','Ago/26'];
+const PI_ANALYSES = [25497,46643,49639,52635];
+const BRASIL_ANALYSES = [603381,816247,817880,819513];
 
-const RESULT_MONTHS = ['2025','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Ago/26'];
-const VALIDADOS  = [1563,20010,20006,23571,25469,37581,49175,58400];
-const CANCELADOS = [1574,1662,1677,1708,1755,2122,2249,2746];
-const PENDENTES  = [6030,13946,14767,15967,49717,36235,189618,171770]; // Agrupado Pendentes + Suspensos
-const AG_GESTOR  = [320811,294684,294546,290070,255444,257158,92927,102740];
+const RESULT_MONTHS = ['2025','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26','Ago/26'];
+const VALIDADOS  = [1563,20010,20006,23571,25469,37581,49175,53787,58400];
+const CANCELADOS = [1574,1662,1677,1708,1755,2122,2249,2497,2746];
+const PENDENTES  = [6030,13946,14767,15967,49717,36235,189618,180694,171770]; // Agrupado Pendentes + Suspensos
+const AG_GESTOR  = [320811,294684,294546,290070,255444,257158,92927,97833,102740];
 
 const ANOS = ['2022','2023','2024','2025','Ago/26'];
 const TOTAL_REG = [255373,278938,301000,329978,335656];
 
 // Dados para o novo Gráfico Empilhado
-const HIST_LABELS = ['2022','2023','2024','2025','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Ago/26'];
-const HIST_AG_GESTOR = [255373,278938,301000,320811,294684,294546,290070,255444,257158,92927,102740];
-const HIST_VALIDADOS = [0,0,0,1563,20010,20006,23571,25469,37581,49175,58400];
-const HIST_CANCELADOS = [0,0,0,1574,1662,1677,1708,1755,2122,2249,2746];
-const HIST_PENDENTES = [0,0,0,6030,13946,14767,15967,49717,36235,189618,171770];
-const HIST_SUSPENSOS = [0,0,0,0,0,0,329,613,2092,3375,4265];
+const HIST_LABELS = ['2022','2023','2024','2025','Jan/26','Fev/26','Mar/26','Abr/26','Mai/26','Jun/26','Jul/26','Ago/26'];
+const HIST_AG_GESTOR = [255373,278938,301000,320811,294684,294546,290070,255444,257158,92927,97833,102740];
+const HIST_VALIDADOS = [0,0,0,1563,20010,20006,23571,25469,37581,49175,53787,58400];
+const HIST_CANCELADOS = [0,0,0,1574,1662,1677,1708,1755,2122,2249,2497,2746];
+const HIST_PENDENTES = [0,0,0,6030,13946,14767,15967,49717,36235,189618,180694,171770];
+const HIST_SUSPENSOS = [0,0,0,0,0,0,329,613,2092,3375,3820,4265];
 
 const RANKING = [
   {r:1,e:'PR',reg:'Sul',v:193243},
@@ -1344,9 +1344,9 @@ function initCharts(){
     data:{
       labels:MONTHS4,
       datasets:[
-        {label:'Validados',data:[25469,37581,49175,58400],backgroundColor:'#10B981',borderRadius:6,borderSkipped:false},
-        {label:'Ag. Empreendedor',data:[49717,36235,189618,171770],backgroundColor:'#F59E0B',borderRadius:6,borderSkipped:false},
-        {label:'Cancelados',data:[1755,2122,2249,2746],backgroundColor:'#3B82F6',borderRadius:6,borderSkipped:false},
+        {label:'Validados',data:[37581,49175,53787,58400],backgroundColor:'#10B981',borderRadius:6,borderSkipped:false},
+        {label:'Ag. Empreendedor',data:[36235,189618,180694,171770],backgroundColor:'#F59E0B',borderRadius:6,borderSkipped:false},
+        {label:'Cancelados',data:[2122,2249,2497,2746],backgroundColor:'#3B82F6',borderRadius:6,borderSkipped:false},
       ]
     },
     options:{

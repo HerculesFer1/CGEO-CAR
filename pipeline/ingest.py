@@ -111,42 +111,93 @@ def read_uf_csv(csv_path):
             ranking[uf.upper()] = val
     return ranking
 
-def update_data_json(data_path, pi, uf_ranking, month_long, year, prev_short):
+def update_data_json(data_path, pi, uf_ranking, month_long, year, prev_short, replace=False, set_current=True):
+    """
+    Atualiza data.json.
+
+    Modos:
+      set_current=True (default): também atualiza month_long/month_short/previous_month_short
+        (o mes recem-adicionado passa a ser o mes corrente exibido no dashboard).
+      set_current=False: apenas insere o ponto na serie historica, sem alterar
+        o mes corrente. Util para preencher meses passados.
+
+      replace=False (default): se o mes ja existe, mantem os valores antigos.
+      replace=True: se o mes ja existe, sobrescreve os valores.
+
+    O historico agora aceita meses fora de ordem — a ordem cronologica final e
+    inferida pelo helper _reorder_history() executado apos cada insercao.
+    """
     data = json.loads(Path(data_path).read_text(encoding="utf-8"))
     short = f"{MONTH_ABBR[month_long]}/{str(year)[-2:]}"
 
-    # Atualiza header
-    data["month_long"] = month_long
-    data["month_short"] = short
-    data["previous_month_short"] = prev_short
-    data["year"] = year
+    if set_current:
+        data["month_long"] = month_long
+        data["month_short"] = short
+        data["previous_month_short"] = prev_short
+        data["year"] = year
     data["pi"] = {**data["pi"], **pi}
-    # Mantem o _doc original
-    if "_doc" in data.get("pi", {}):
-        data["pi"]["_doc"] = json.loads(Path(data_path).read_text(encoding="utf-8"))["pi"].get("_doc","")
     data["uf_ranking"] = {"_doc": data["uf_ranking"].get("_doc",""), **uf_ranking}
 
-    # Append historico (somente se ainda nao registrado)
+    # ─ Historico: insere ou substitui ─
     hist = data["history"]
-    if hist["labels"][-1] != short:
+    if short in hist["labels"]:
+        if replace:
+            i = hist["labels"].index(short)
+            hist["ag_gestor"][i]  = pi["ag_gestor"]
+            hist["validados"][i]  = pi["validados"]
+            hist["cancelados"][i] = pi["cancelados"]
+            hist["pendentes"][i]  = pi["pendentes"]
+            hist["suspensos"][i]  = pi["suspensos"]
+            print(f"  Substituido {short} no historico.")
+        else:
+            print(f"  {short} ja existe (use --replace para sobrescrever).")
+    else:
         hist["labels"].append(short)
         hist["ag_gestor"].append(pi["ag_gestor"])
         hist["validados"].append(pi["validados"])
         hist["cancelados"].append(pi["cancelados"])
         hist["pendentes"].append(pi["pendentes"])
         hist["suspensos"].append(pi["suspensos"])
+        print(f"  Adicionado {short} ao historico.")
 
-    # PI ranking dos ultimos 4 meses
+    _reorder_history(hist)
+
+    # ─ pi_analyses_4mo: janela deslizante de 4 meses ─
     pi_val = uf_ranking.get("PI", 0)
     p4 = data["pi_analyses_4mo"]
-    if p4["labels"][-1] != short:
+    if short in p4["labels"]:
+        if replace:
+            i = p4["labels"].index(short)
+            p4["pi"][i] = pi_val
+            p4["brasil"][i] = sum(v for v in uf_ranking.values())
+    else:
         p4["labels"] = p4["labels"][1:] + [short]
         p4["pi"] = p4["pi"][1:] + [pi_val]
-        total_br = sum(v for v in uf_ranking.values())
-        p4["brasil"] = p4["brasil"][1:] + [total_br]
+        p4["brasil"] = p4["brasil"][1:] + [sum(v for v in uf_ranking.values())]
 
     Path(data_path).write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"  data.json atualizado: {data_path}")
+
+# ─ Helper: reordena history por ordem cronologica dos meses ─
+_MONTH_ORDER = {"Jan":1,"Fev":2,"Mar":3,"Abr":4,"Mai":5,"Jun":6,
+                "Jul":7,"Ago":8,"Set":9,"Out":10,"Nov":11,"Dez":12}
+
+def _label_key(lbl):
+    """Retorna tupla ordenavel: (ano, mes). Rotulos anuais ('2022') vem antes."""
+    if "/" in lbl:
+        m, y = lbl.split("/")
+        return (2000 + int(y), _MONTH_ORDER.get(m, 99))
+    else:
+        return (int(lbl), 0)
+
+def _reorder_history(hist):
+    """Reordena todos os arrays sincronizados de history por _label_key."""
+    keys = ["ag_gestor","validados","cancelados","pendentes","suspensos"]
+    zipped = list(zip(hist["labels"], *(hist[k] for k in keys)))
+    zipped.sort(key=lambda t: _label_key(t[0]))
+    hist["labels"] = [t[0] for t in zipped]
+    for i, k in enumerate(keys, start=1):
+        hist[k] = [t[i] for t in zipped]
 
 def main():
     ap = argparse.ArgumentParser()
@@ -156,6 +207,10 @@ def main():
     ap.add_argument("--year", type=int, required=True)
     ap.add_argument("--prev-month-short", required=True, help="Mes anterior abreviado (ex: Jun/26)")
     ap.add_argument("--data", default="data/data.json")
+    ap.add_argument("--replace", action="store_true",
+                    help="Se o mes ja existe no historico, sobrescreve os valores (ex: substituir estimativa por dado real).")
+    ap.add_argument("--no-set-current", action="store_true",
+                    help="Nao altera o mes corrente exibido no dashboard (util para preencher meses passados).")
     args = ap.parse_args()
 
     here = Path(__file__).parent
@@ -168,7 +223,10 @@ def main():
     uf = read_uf_csv(args.uf_csv)
     print(f"   UFs: {len(uf)} | Total Brasil: {sum(uf.values()):,}".replace(",","."))
 
-    update_data_json(here / args.data, pi, uf, args.month, args.year, args.prev_month_short)
+    update_data_json(
+        here / args.data, pi, uf, args.month, args.year, args.prev_month_short,
+        replace=args.replace, set_current=not args.no_set_current,
+    )
     print("OK. Agora rode: python build.py")
 
 if __name__ == "__main__":
